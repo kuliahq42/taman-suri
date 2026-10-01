@@ -20,6 +20,7 @@ const badgeColors: Record<PlantBadge, string> = {
   "Easy Care": "bg-sage-100 text-moss-700 border-sage-200",
   "Air Purifier": "bg-moss-50 text-moss-700 border-moss-200",
   "New Arrival": "bg-terracotta text-cream-50 border-terracotta/90",
+  "Rare Collector Plant": "bg-amber-100 text-amber-800 border-amber-200",
 };
 
 export const PlantCard = ({ plant, onQuickView, index = 0 }: PlantCardProps) => {

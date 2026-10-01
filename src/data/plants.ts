@@ -10,7 +10,8 @@ export type PlantBadge =
   | "Best Seller"
   | "Easy Care"
   | "Air Purifier"
-  | "New Arrival";
+  | "New Arrival"
+  | "Rare Collector Plant";
 
 export interface Plant {
   id: string;
@@ -105,7 +106,7 @@ export const plants: Plant[] = [
     price: 8500000,
     image:
       "https://images.unsplash.com/photo-1655065488820-2cf2d1a1204c?w=800&q=80",
-    badges: ["Rare Collector Plant", "New Arrival"],
+    badges: ["New Arrival"],
     description:
       "Ultra-rare collector's gem with stunning white marbled variegation. A true trophy plant.",
     careGuide: {
