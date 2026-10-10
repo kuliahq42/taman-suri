@@ -2,6 +2,7 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { CartDrawer } from "@/components/layout/CartDrawer";
 import { FloatingWhatsApp } from "@/components/layout/FloatingWhatsApp";
+import { HashScrollSync } from "@/app/HashScrollSync";
 import { Hero } from "@/components/sections/Hero";
 import { Services } from "@/components/sections/Services";
 import { Shop } from "@/components/sections/Shop";
@@ -14,6 +15,7 @@ import {
 export default function Home() {
   return (
     <div className="min-h-screen bg-cream-50 text-charcoal overflow-x-hidden">
+      <HashScrollSync />
       <Header />
 
       <main>

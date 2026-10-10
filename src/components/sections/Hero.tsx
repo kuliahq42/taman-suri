@@ -12,7 +12,7 @@ import {
   CheckCircle2,
   Leaf,
 } from "lucide-react";
-import { getWhatsAppLink, smoothScrollTo } from "@/lib/utils";
+import { getWhatsAppLink, smoothScrollToId } from "@/lib/utils";
 
 export const Hero = () => {
   const trustBadges = [
@@ -127,7 +127,7 @@ export const Hero = () => {
             className="flex flex-wrap items-center gap-4 mb-16"
           >
             <button
-              onClick={() => smoothScrollTo("shop")}
+              onClick={() => smoothScrollToId("shop")}
               className="group inline-flex items-center gap-2.5 rounded-full bg-terracotta px-7 py-4 text-base font-bold text-white shadow-xl shadow-terracotta/30 transition-all hover:brightness-110 hover:-translate-y-1 hover:shadow-2xl hover:shadow-terracotta/40 active:translate-y-0"
             >
               Explore Plant Shop

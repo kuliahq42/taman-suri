@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { usePathname, useRouter } from "next/navigation";
 import {
   Leaf,
   Search,
@@ -11,16 +12,29 @@ import {
   MessageCircle,
 } from "lucide-react";
 import { useCartStore } from "@/store/cart";
-import { getWhatsAppLink, smoothScrollTo } from "@/lib/utils";
+import { getWhatsAppLink, smoothScrollToId } from "@/lib/utils";
 import Link from "next/link";
 
-const NAV_LINKS = [
-  { label: "Home", id: "home" },
-  { label: "Landscaping", id: "services" },
-  { label: "Plant Shop", id: "shop" },
-  { label: "Portfolio", id: "portfolio" },
-  { label: "About Us", id: "about" },
-  { label: "Contact", id: "contact" },
+type NavItemAnchor = {
+  type: "anchor";
+  label: string;
+  id: "home" | "services" | "shop" | "portfolio" | "about" | "contact";
+};
+type NavItemRoute = {
+  type: "route";
+  label: string;
+  href: string;
+};
+type NavItem = NavItemAnchor | NavItemRoute;
+
+const NAV_LINKS: NavItem[] = [
+  { type: "anchor", label: "Home", id: "home" },
+  { type: "anchor", label: "Landscaping", id: "services" },
+  { type: "anchor", label: "Plant Shop", id: "shop" },
+  { type: "anchor", label: "Portfolio", id: "portfolio" },
+  { type: "anchor", label: "About Us", id: "about" },
+  { type: "route", label: "Blog", href: "/blog" },
+  { type: "anchor", label: "Contact", id: "contact" },
 ];
 
 export const Header = () => {
@@ -29,6 +43,9 @@ export const Header = () => {
   const toggleCart = useCartStore((s) => s.toggleCart);
   const getTotalItems = useCartStore((s) => s.getTotalItems);
   const cartCount = getTotalItems();
+  const pathname = usePathname();
+  const router = useRouter();
+  const isHomePage = pathname === "/";
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -37,10 +54,20 @@ export const Header = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const handleNavClick = (id: string) => {
+  const handleAnchorNav = (id: string) => {
     setMobileOpen(false);
-    setTimeout(() => smoothScrollTo(id), 50);
+    if (isHomePage) {
+      setTimeout(() => smoothScrollToId(id), 50);
+    } else {
+      router.push(`/#${id}`);
+    }
   };
+
+  const handleRouteNav = (href: string) => {
+    setMobileOpen(false);
+    router.push(href);
+  };
+
 
   return (
     <motion.header
@@ -56,7 +83,7 @@ export const Header = () => {
       <div className="container-wide flex h-20 items-center justify-between">
         {/* Logo */}
         <button
-          onClick={() => handleNavClick("home")}
+          onClick={() => handleAnchorNav("home")}
           className="flex items-center gap-2 group"
         >
           <div className="w-10 h-10 rounded-full bg-forest-800 flex items-center justify-center group-hover:bg-forest-700 transition-colors">
@@ -78,16 +105,23 @@ export const Header = () => {
 
         {/* Desktop Nav */}
         <nav className="hidden lg:flex items-center gap-1">
-          {NAV_LINKS.map((link) => (
-            <button
-              key={link.id}
-              onClick={() => handleNavClick(link.id)}
-              className="px-4 py-2 text-sm font-medium text-charcoal hover:text-forest-800 relative group"
-            >
-              {link.label}
-              <span className="absolute bottom-1 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-terracotta group-hover:w-1/2 transition-all duration-300" />
-            </button>
-          ))}
+          {NAV_LINKS.map((link) => {
+            const key = link.type === "anchor" ? link.id : link.href;
+            const handleClick =
+              link.type === "anchor"
+                ? () => handleAnchorNav(link.id)
+                : () => handleRouteNav(link.href);
+            return (
+              <button
+                key={key}
+                onClick={handleClick}
+                className="px-4 py-2 text-sm font-medium text-charcoal hover:text-forest-800 relative group"
+              >
+                {link.label}
+                <span className="absolute bottom-1 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-terracotta group-hover:w-1/2 transition-all duration-300" />
+              </button>
+            );
+          })}
         </nav>
 
         {/* Actions */}
@@ -159,18 +193,25 @@ export const Header = () => {
             className="lg:hidden overflow-hidden bg-cream-50 border-t border-forest-800/5"
           >
             <nav className="container-wide py-6 flex flex-col gap-1">
-              {NAV_LINKS.map((link, i) => (
-                <motion.button
-                  key={link.id}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.05 * i }}
-                  onClick={() => handleNavClick(link.id)}
-                  className="text-left px-4 py-3 rounded-xl text-base font-medium text-charcoal hover:bg-forest-800/5 hover:text-forest-800 transition-colors"
-                >
-                  {link.label}
-                </motion.button>
-              ))}
+              {NAV_LINKS.map((link, i) => {
+                const key = link.type === "anchor" ? link.id : link.href;
+                const handleClick =
+                  link.type === "anchor"
+                    ? () => handleAnchorNav(link.id)
+                    : () => handleRouteNav(link.href);
+                return (
+                  <motion.button
+                    key={key}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.05 * i }}
+                    onClick={handleClick}
+                    className="text-left px-4 py-3 rounded-xl text-base font-medium text-charcoal hover:bg-forest-800/5 hover:text-forest-800 transition-colors"
+                  >
+                    {link.label}
+                  </motion.button>
+                );
+              })}
               <Link
                 href={getWhatsAppLink(
                   encodeURIComponent(

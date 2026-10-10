@@ -36,24 +36,64 @@ export const formatWhatsAppMessage = (
 
 export const getWhatsAppLink = (message?: string): string => {
   const number =
-    process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "6281398618619";
+    process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "6282311139873";
   const base = `https://wa.me/${number}`;
   return message ? `${base}?text=${message}` : base;
 };
 
-export const smoothScrollTo = (id: string) => {
-  if (typeof document === "undefined") return;
+const HEADER_OFFSET = 80;
+
+export const smoothScrollToId = (id: string) => {
+  if (typeof window === "undefined") return;
   const el = document.getElementById(id);
-  if (el) {
-    const offset = 80;
+  if (!el) {
+    window.location.hash = id;
+    return;
+  }
+  const bodyRect = document.body.getBoundingClientRect().top;
+  const elementRect = el.getBoundingClientRect().top;
+  const elementPosition = elementRect - bodyRect;
+  const offsetPosition = elementPosition - HEADER_OFFSET;
+  window.scrollTo({
+    top: offsetPosition,
+    behavior: "smooth",
+  });
+  if (history.pushState) {
+    history.pushState(null, "", `#${id}`);
+  } else {
+    window.location.hash = id;
+  }
+};
+
+export const navigateToHomeAndScroll = (id: string) => {
+  if (typeof window === "undefined") return;
+  window.location.href = `/#${id}`;
+};
+
+export const scrollHashIntoViewOnMount = () => {
+  if (typeof window === "undefined") return;
+  const hash = window.location.hash.replace("#", "");
+  if (!hash) return;
+  const tryScroll = () => {
+    const el = document.getElementById(hash);
+    if (!el) return false;
     const bodyRect = document.body.getBoundingClientRect().top;
     const elementRect = el.getBoundingClientRect().top;
     const elementPosition = elementRect - bodyRect;
-    const offsetPosition = elementPosition - offset;
-
-    window.scrollTo({
-      top: offsetPosition,
-      behavior: "smooth",
-    });
+    const offsetPosition = elementPosition - HEADER_OFFSET;
+    setTimeout(() => {
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth",
+      });
+    }, 150);
+    return true;
+  };
+  if (!tryScroll()) {
+    let count = 0;
+    const interval = setInterval(() => {
+      count++;
+      if (tryScroll() || count > 10) clearInterval(interval);
+    }, 100);
   }
 };

@@ -13,7 +13,6 @@ import {
   ArrowRight,
 } from "lucide-react";
 import Link from "next/link";
-import { smoothScrollTo } from "@/lib/utils";
 
 export const Footer = () => {
   return (
@@ -108,19 +107,20 @@ export const Footer = () => {
             </h4>
             <ul className="space-y-3 text-sm">
               {[
-                { label: "Home", id: "home" },
-                { label: "Landscaping", id: "services" },
-                { label: "Plant Shop", id: "shop" },
-                { label: "Portfolio", id: "portfolio" },
-                { label: "About Us", id: "about" },
+                { label: "Home", href: "/#home" },
+                { label: "Landscaping", href: "/#services" },
+                { label: "Plant Shop", href: "/#shop" },
+                { label: "Portfolio", href: "/#portfolio" },
+                { label: "About Us", href: "/#about" },
+                { label: "Blog", href: "/blog" },
               ].map((link) => (
-                <li key={link.id}>
-                  <button
-                    onClick={() => smoothScrollTo(link.id)}
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
                     className="text-cream-200/70 hover:text-terracotta transition-colors"
                   >
                     {link.label}
-                  </button>
+                  </Link>
                 </li>
               ))}
             </ul>
