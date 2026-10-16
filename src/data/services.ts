@@ -16,7 +16,7 @@ export const services: Service[] = [
     description:
       "Transform your outdoor space into a serene sanctuary with our signature minimalist garden design. We blend clean lines, carefully selected tropical foliage, and natural stone elements to create gardens that feel both contemporary and timeless.",
     image:
-      "https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?w=1200&q=80",
+      "/images/Gemini_Generated_Image_nm8h95nm8h95nm8h.jfif",
     features: [
       "Consultation & 3D design rendering",
       "Premium tropical plant selection",
@@ -33,7 +33,7 @@ export const services: Service[] = [
     description:
       "Bring life to interior walls and corporate spaces with our signature vertical gardens and lush indoor plantscapes. Perfect for offices, restaurants, hotels, and retail environments that crave biophilic design.",
     image:
-      "https://images.unsplash.com/photo-1591857177580-dc82b9ac4e1e?w=1200&q=80",
+      "/images/v1.jpg",
     features: [
       "Custom green wall design",
       "Automated drip irrigation",
@@ -50,7 +50,7 @@ export const services: Service[] = [
     description:
       "Elevate your landscape with custom hardscaping — from elegant koi ponds and cascading waterfalls to premium decking, pergolas, and natural stone walls built to last a lifetime.",
     image:
-      "https://images.unsplash.com/photo-1570544860153-8b5d4d2a3c28?w=1200&q=80",
+      "/images/Gemini_Generated_Image_x9r9s9x9r9s9x9r9.jfif",
     features: [
       "Custom koi pond design & filtration",
       "Natural stone walls & terraces",

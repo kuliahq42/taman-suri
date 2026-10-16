@@ -54,7 +54,7 @@ export const plants: Plant[] = [
     category: "indoor",
     price: 1250000,
     image:
-      "https://images.unsplash.com/photo-1545165375-7c5f3d0b96f3?w=800&q=80",
+      "/images/fiddle-scaled-e1765039085500.webp",
     badges: ["Best Seller"],
     description:
       "Sculptural beauty with large, glossy violin-shaped leaves. Perfect for bright corners.",
@@ -105,7 +105,7 @@ export const plants: Plant[] = [
     category: "rare",
     price: 8500000,
     image:
-      "https://images.unsplash.com/photo-1655065488820-2cf2d1a1204c?w=800&q=80",
+      "/images/i.shgcdn.AVIF",
     badges: ["New Arrival"],
     description:
       "Ultra-rare collector's gem with stunning white marbled variegation. A true trophy plant.",
@@ -156,7 +156,7 @@ export const plants: Plant[] = [
     category: "rare",
     price: 4200000,
     image:
-      "https://images.unsplash.com/photo-1640620567287-6b5e4a0aa7ed?w=800&q=80",
+      "/images/Philodendron_Pink_Princess-houseplant_grande.WEBP",
     badges: ["Rare Collector Plant"],
     description:
       "Highly coveted pink variegated leaves with deep green marbling. An Instagram favorite.",
@@ -173,7 +173,7 @@ export const plants: Plant[] = [
     category: "outdoor",
     price: 950000,
     image:
-      "https://images.unsplash.com/photo-1564507592333-c60657eea523?w=800&q=80",
+      "/images/Gemini_Generated_Image_j8mevbj8mevbj8me.jfif",
     badges: ["Easy Care"],
     description:
       "Fragrant tropical blooms in pink and white. Creates a Bali resort atmosphere in any garden.",
@@ -224,7 +224,7 @@ export const plants: Plant[] = [
     category: "pots-accessories",
     price: 165000,
     image:
-      "https://images.unsplash.com/photo-1584568694244-14fbdf83bd30?w=800&q=80",
+      "/images/Untitled-design-2024-11-19T122208_568793_3.jpg",
     badges: ["Best Seller"],
     description:
       "Premium well-draining potting mix enriched with coco peat, perlite, and slow-release fertilizer.",
