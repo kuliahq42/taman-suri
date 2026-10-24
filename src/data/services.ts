@@ -16,7 +16,7 @@ export const services: Service[] = [
     description:
       "Transform your outdoor space into a serene sanctuary with our signature minimalist garden design. We blend clean lines, carefully selected tropical foliage, and natural stone elements to create gardens that feel both contemporary and timeless.",
     image:
-      "/images/Gemini_Generated_Image_nm8h95nm8h95nm8h.jfif",
+      "/images/Gemini_Generated_Image_nm8h95nm8h95nm8h.avif",
     features: [
       "Consultation & 3D design rendering",
       "Premium tropical plant selection",
@@ -50,7 +50,7 @@ export const services: Service[] = [
     description:
       "Elevate your landscape with custom hardscaping — from elegant koi ponds and cascading waterfalls to premium decking, pergolas, and natural stone walls built to last a lifetime.",
     image:
-      "/images/Gemini_Generated_Image_x9r9s9x9r9s9x9r9.jfif",
+      "/images/Gemini_Generated_Image_x9r9s9x9r9s9x9r9.avif",
     features: [
       "Custom koi pond design & filtration",
       "Natural stone walls & terraces",

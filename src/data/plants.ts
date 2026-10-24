@@ -173,7 +173,7 @@ export const plants: Plant[] = [
     category: "outdoor",
     price: 950000,
     image:
-      "/images/Gemini_Generated_Image_j8mevbj8mevbj8me.jfif",
+      "/images/Gemini_Generated_Image_j8mevbj8mevbj8me.avif",
     badges: ["Easy Care"],
     description:
       "Fragrant tropical blooms in pink and white. Creates a Bali resort atmosphere in any garden.",

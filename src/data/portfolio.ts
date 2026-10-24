@@ -41,7 +41,7 @@ export const portfolio: PortfolioItem[] = [
     description:
       "Full interior plantscape design including vertical gardens, hanging plants, and indoor trees for a premium dining experience.",
     image:
-      "/images/Gemini_Generated_Image_qzqba6qzqba6qzqb.jfif",
+      "/images/Gemini_Generated_Image_qzqba6qzqba6qzqb.avif",
   },
   {
     id: "pr004",
