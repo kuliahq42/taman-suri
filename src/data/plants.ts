@@ -54,7 +54,7 @@ export const plants: Plant[] = [
     category: "indoor",
     price: 1250000,
     image:
-      "/images/fiddle-scaled-e1765039085500.webp",
+      "/images/fiddle-scaled-e1765039085500.avif",
     badges: ["Best Seller"],
     description:
       "Sculptural beauty with large, glossy violin-shaped leaves. Perfect for bright corners.",
@@ -156,7 +156,7 @@ export const plants: Plant[] = [
     category: "rare",
     price: 4200000,
     image:
-      "/images/Philodendron_Pink_Princess-houseplant_grande.WEBP",
+      "/images/Philodendron_Pink_Princess-houseplant_grande.avif",
     badges: ["Rare Collector Plant"],
     description:
       "Highly coveted pink variegated leaves with deep green marbling. An Instagram favorite.",
